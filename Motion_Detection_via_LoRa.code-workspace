@@ -1,7 +1,15 @@
 {
 	"folders": [
 		{
+			"path": "LoRa_Receiver"
+		},
+		{
+			"name": "LoRa_Transmitter",
+			"path": "LoRa_Transmitter"
+		},
+		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {}
 }
