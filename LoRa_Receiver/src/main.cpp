@@ -1,12 +1,10 @@
 #include <Arduino.h>
 
 /*********
-  Info: 
-  - https://github.com/sandeepmistry/arduino-LoRa
-  - https://github.com/sandeepmistry/arduino-LoRa/blob/master/API.md
-
   Modified from the examples of the Arduino LoRa library
   More resources: https://randomnerdtutorials.com
+  05-12-2021 The print to serial commands are almost all disabled. When they were enabled
+   the ESP32 did not respons after 2 to 3 hours.
   Receiver
 *********/
 
@@ -22,7 +20,7 @@
 const int led = 26;
 const int beeper = 12;
 
-String LoRaData; // used to store the received data
+//String LoRaData; // used to store the received data
 
 void setup() {
   //initialize Serial Monitor
@@ -45,12 +43,6 @@ void setup() {
   // ranges from 0-0xFF
   LoRa.setSyncWord(0x99); //customized to 99
   Serial.println("LoRa Initializing OK!");
-  
-  // register the receive callback
-  LoRa.onReceive(onReceive);
-
-  // put the radio into receive mode
-  LoRa.receive();
 
     // Set LED and beeper to LOW
   pinMode(led, OUTPUT);
@@ -60,21 +52,13 @@ void setup() {
 }
 
 void loop() {
-}
-
-void onReceive(int packetSize) {
-  // received a packet
-  Serial.print("Received packet '");
-
-  // read packet
- // for (int i = 0; i < packetSize; i++) {
- //   Serial.print((char)LoRa.read());
- // }
-
-  // print RSSI of packet
- // Serial.print("' with RSSI ");
- // Serial.println(LoRa.packetRssi());
- 
+  String LoRaData; // used to store the received data
+  // try to parse packet
+  int packetSize = LoRa.parsePacket();
+  if (packetSize) {
+    // received a packet
+    //Serial.print("Received packet: '");
+    // read packet
     while (LoRa.available()) {
       LoRaData = LoRa.readString();
     }
@@ -85,13 +69,12 @@ void onReceive(int packetSize) {
         digitalWrite(led, LOW);
         digitalWrite(beeper, LOW);
       } 
-      Serial.print(LoRaData);
-      Serial.print("'");
+      //Serial.print(LoRaData);
+      //Serial.print("'");
       // print RSSI of packet
-      Serial.print(" with RSSI ");
-      Serial.println(LoRa.packetRssi());
+      //Serial.print(" with RSSI ");
+      //Serial.println(LoRa.packetRssi());
     }
-
-
-
-
+    //Serial.println("Pauze 20 sec to not get overwelmed by the triggers");
+    //delay(20000); 
+}

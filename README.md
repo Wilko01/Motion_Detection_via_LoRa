@@ -97,7 +97,8 @@ Generic
 
 
 ### Problems
-..
+- The receiver did not respond after 2 to 3 hours. 
+    On 05-12-2021 Disabled almost all 'print to serial' commands. Printing of Strings takes a lot of memory, hence commented out all the print to serial commands which are not in the setup loop.
 
 ### Wishlist
 ..
