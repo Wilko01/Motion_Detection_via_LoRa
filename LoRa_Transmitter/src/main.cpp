@@ -1,8 +1,13 @@
 #include <Arduino.h>
 
 /*********
+   Info: 
+  - https://github.com/sandeepmistry/arduino-LoRa
+  - https://github.com/sandeepmistry/arduino-LoRa/blob/master/API.md
+
   Modified from the examples of the Arduino LoRa library
   More resources: https://randomnerdtutorials.com
+  Transmitter
 *********/
 
 #include <SPI.h>
@@ -72,6 +77,7 @@ void loop() {
     digitalWrite(ledPin, HIGH); //turn the led high for visual debugging
     digitalWrite(beeperPin, HIGH); //turn the led high
     delay(2000);
+    digitalWrite(ledPin, LOW);
     digitalWrite(beeperPin, LOW);
       delay(5000);
     } else { //No motion so set low
