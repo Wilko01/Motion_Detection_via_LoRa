@@ -1,10 +1,17 @@
 # Motion sensor communicating over LoRa
 The challenge is to detect motion when someone enters the premise and send it over a longer distance to a location 50+m away where the residents are located and are triggered via a signal that someone is coming.
 
+<img src="Images/LoRa_Sender_and_Receiver_01.jpg" alt="drawing" width="700"/>
 
-<img src="Images/Air_quality_meter01.jpg" alt="drawing" width="700"/>
+<img src="Images/LoRa_Sender_01.jpg" alt="drawing" width="700"/>
 
-<img src="Images/Air_quality_meter08.jpg" alt="drawing" width="700"/>
+<img src="Images/LoRa_Receiver_01.jpg" alt="drawing" width="700"/>
+
+<img src="Images/LoRa_Sender_Motion_Sensor_02.jpg" alt="drawing" width="700"/>
+
+<img src="Images/LoRa_Sender_Motion_Sensor_03.jpg" alt="drawing" width="700"/>
+
+
 
 
 ## Description and operation instructions
@@ -49,19 +56,15 @@ The LoRa RFM95W-868S2 transceiver is connected to the ESP32-WROOM-32D
 
 <img src="Images/ESP32-WROOM-32U.jpg" alt="drawing" width="150"/>
 
-- 1 x 2.4GHz antenna
-
-<img src="Images/2.4GHz_Antenna.jpg" alt="drawing" width="150"/>
 
 
 
-- 4 x Screws 2.6 x 20 mm
-- 1 x thumbtack
-- 1 x Micro USB connector
 
 
 ### Schematic overview
 <img src="Images/Schematic_overview.jpg" alt="drawing" width="500"/>
+
+The drawing is not completely correct as Pin DIO0 is connected to 25 as listed in the table above. I was lasy and copied the drawing from Randomtutorials. Which I'm thankfull for good instructions to get me started.
 
 ### ESPHome installation
 See the instructions https://github.com/Wilko01/ESPHome  (not listed here)
@@ -72,21 +75,18 @@ Create a new device  with this code:
 
 
 ### Interface
-#### Home Assistant
-Home Assistant is connected via the ESPHome integration. The hazardous values for the 2.5um are different from the values of the 10.0um. Therefore two cards are made in the dashboard.
-
-<img src="Images/Dashboard 2.5 and 10.0um.jpg" alt="drawing" width="500"/>
+There is no interface with anything as this needs to run stand-alone.
 
 
 
 
 ### Testing
-Create a dashboard in Home Assistant and see the measurements come in. Depending on the measurement interval this can take some time.
+Place it somewhere were motion is and check if the signal comes in.
 
 ## 3D printer files
 It all started by measuring the air quality when printing, so the 3D printer files must be included in this project:
 - [3D files include the Sketchup make file as well as the 3D print files .STL](/3D_Printer_Files)
-- [Thingiverse](https://www.thingiverse.com/thing:5135259)
+- [Thingiverse](https://www.thingiverse.com/thing:5155707)
 
 
 ### Information
